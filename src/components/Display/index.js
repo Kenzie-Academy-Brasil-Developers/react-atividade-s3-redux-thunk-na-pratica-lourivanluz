@@ -9,6 +9,11 @@ export const Display = () => {
   const mensagens = useSelector((state) => state.user);
   const dispath = useDispatch();
 
+  const handleClick = () => {
+    dispath(adicionarMensagemThunk(mensagem));
+    setMensage("");
+  };
+
   return (
     <DivStyled>
       <ul>
@@ -23,9 +28,7 @@ export const Display = () => {
         value={mensagem}
         onChange={(event) => setMensage(event.target.value)}
       />
-      <button onClick={() => dispath(adicionarMensagemThunk(mensagem))}>
-        enviar
-      </button>
+      <button onClick={handleClick}>enviar</button>
     </DivStyled>
   );
 };
